@@ -2,7 +2,7 @@ import { User } from '../models/User.js';
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../utils/tokenUtils.js';
 import { validationResult } from 'express-validator';
 
-const cookieOptions = { httpOnly: true, secure: process.env.NODE_ENV === 'production', sameSite: 'lax', maxAge: 7 * 24 * 60 * 60 * 1000 };
+const cookieOptions = { httpOnly: true, secure: true, sameSite: 'none', maxAge: 7 * 24 * 60 * 60 * 1000 };
 
 export async function register(req, res, next) {
   try {
