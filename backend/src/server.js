@@ -25,7 +25,7 @@ if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 await connectDB();
 
 const app = express();
-app.use(cors({ origin: 'https://lms-kappa-ashen.vercel.app/', credentials: true }));
+app.use(cors({ origin: process.env.FRONTEND_URL , credentials: true }));
 app.use('/uploads', express.static(uploadsDir));
 app.use('/api/payments/webhook', express.raw({ type: 'application/json' }), webhook);
 app.use(express.json());
